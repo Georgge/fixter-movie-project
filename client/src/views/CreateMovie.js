@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import { SectionTitle } from '../componets/SectionTitle';
-import { CelebrityForm } from '../componets/CelebrityForm';
-import { CONSTANTS } from '../config/Constants';
+import { MovieForm } from '../componets/MovieForm';
 
-export class CreateCelebrety extends Component {
+export class CreateMovie extends Component {
   state = {
-    name: '',
-    occupation: '',
-    famousPhrase: '',
+    title: '',
+    genre: '',
+    plot: '',
+    poster: '',
+    image: '',
   }
 
   handleChange = (e) => {
@@ -17,22 +17,16 @@ export class CreateCelebrety extends Component {
   }
 
   handleSubmit = () => {
-    axios.post(`${CONSTANTS.API_URL}/celebrities`, this.state)
-      .then((response) => {
-        window.location.replace('/');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log('not');
   }
 
   render() {
     return (
       <div className="create-page">
-        <SectionTitle>Create Celebrety</SectionTitle>
+        <SectionTitle>Create Movie</SectionTitle>
         <div className="form">
           <div className="form-data-container">
-            <CelebrityForm 
+            <MovieForm
               state={this.state}
               handleChange={this.handleChange}
             />

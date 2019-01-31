@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CelebrityForm = ({state, handleChange}) => (
+export const CelebrityForm = ({ state, handleChange }) => (
   <div className="form-fields">
     <div className="field">
       <label htmlFor="name" className="field-label">

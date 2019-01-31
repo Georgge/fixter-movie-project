@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { Home } from './views/Home';
 import { CreateCelebrety } from './views/CreateCelebrety';
+import { CreateMovie } from './views/CreateMovie';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +13,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/celebrities" component={CreateCelebrety} />
+            <Route exact path="/celebrities/create" component={CreateCelebrety} />
+            <Route exact path="/movies/create" component={CreateMovie} />
           </Switch>
         </Router>
       </div>
