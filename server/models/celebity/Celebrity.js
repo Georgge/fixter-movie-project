@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const celebritySchema = Schema({
   name: String,
   occupation: String,
-  catchPhrase: String,
+  famousPhrase: String,
 });
 
 module.exports = mongoose.model('Celebrity', celebritySchema);

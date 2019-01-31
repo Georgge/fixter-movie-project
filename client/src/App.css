@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Sarabun', sans-serif;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+.link {
+  color: #1cb3c8;
+  font-size: 1.2rem;
+}
+.button {
+  width: auto;
+  min-width: 144px;
+  height: 36px;
+  background-color: #1cb3c8;
+  color: #dfe2e2;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 2px;
+  margin-left: 6px;
+  margin-right: 6px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  cursor: pointer;
+}
+.button:hover {
+  color: #33313b;
+}
+.field {
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px;
+  margin-bottom: 42px;
+}
+.field-label {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  color: #1cb3c8;
+  font-size: 1.1rem;
+}
+.field-label >input {
+  margin-top: 6px;
+  min-width: 100%;
+  height: 36px;
+  border-bottom: 1px solid #738598;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: rgba(0,0,0,0);
+  font-size: 1.3rem;
+  color: #dfe2e2;
+}
+.field-label >input:focus {
+  outline: none;
+}
+.wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.header {
+  min-width: 100%;
+  height: 104px;
+  text-align: center;
+}
+.header-title {
+  font-family: 'Open sans';
+  width: 100%;
+  height: 100%;
+  line-height: 104px;
+  color: #dfe2e2;
+}
+.home {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #33313b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-title {
+  font-family: 'Open sans';
+  color: #dfe2e2;
+  font-size: 2rem;
+}
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+}
+.create-page {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #33313b;
+}
+.form {
+  margin-top: 12px;
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+.form-fields {
+  min-width: 90%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 42px;
+}
+.form-data-container {
+  width: 80%;
+  padding: 12px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

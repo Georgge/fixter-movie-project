@@ -1,0 +1,160 @@
+/// RESET
+*
+  margin: 0
+  padding: 0
+  font-family: 'Sarabun', sans-serif
+
+a
+  text-decoration: none
+  display: inline-block
+
+
+
+
+/// VARIABLES
+$headerHeight = 104px
+$buttonWidth = 144px
+$buttonHeight = 36px
+$generalPadding = 12px
+$generalMargin = 6px
+
+// -> colors
+$black = #33313b
+$white = #dfe2e2
+$blue = #1cb3c8
+$silver = #738598
+
+
+
+
+/// GENERAL CLASES
+.link
+  color: $blue
+  font-size: 1.2rem
+
+.button
+  width: auto
+  min-width: $buttonWidth
+  height: $buttonHeight
+  background-color: $blue
+  color: $white
+  padding-left: $generalPadding
+  padding-right: $generalPadding
+  text-align: center
+  line-height: $buttonHeight
+  border-radius: 2px
+  margin-left: $generalMargin
+  margin-right: $generalMargin
+  font-size: 1rem
+  text-transform: uppercase
+  font-weight: 600
+  display: inline-block
+  cursor: pointer
+
+  &:hover
+    color: $black
+
+// -> Field container
+.field
+  width: 40%
+  display: flex
+  justify-content: flex-start
+  padding: $generalPadding
+  margin-bottom: ($generalMargin * 7)
+
+  &-label
+    display: flex
+    justify-content: flex-start
+    flex-wrap: wrap
+    width: 100%
+    color: $blue
+    font-size: 1.1rem
+
+    >input
+      margin-top: $generalMargin
+      min-width: 100%
+      height: $buttonHeight
+      border-bottom: 1px solid $silver
+      border-top: none
+      border-left: none 
+      border-right: none
+      background-color: rgba(0, 0, 0, 0)
+      font-size: 1.3rem
+      color: $white
+
+      &:focus
+        outline: none
+
+
+
+/// SPESIFIC CLAsSES
+.wrapper
+  width: 100vw
+  min-height: 100vh
+  box-sizing: border-box
+
+.header
+  min-width: 100%
+  height: $headerHeight
+  text-align: center
+
+  &-title
+    font-family: 'Open sans'
+    width: 100%
+    height: 100%
+    line-height: $headerHeight
+    color: $white
+
+
+
+
+/// Home
+.home
+  min-height: 100vh
+  width: 100%
+  background-color: $black
+  display: flex
+  justify-content: center
+  align-items: center
+
+  &-title
+    font-family: 'Open sans'
+    color: $white
+    font-size: 2rem
+
+  &-buttons
+    display: flex
+    justify-content: center
+    padding-top: $generalPadding
+
+
+
+
+/// Create
+.create-page
+  min-height: 100vh
+  width: 100%
+  background-color: $black
+
+.form
+  margin-top: $generalMargin * 2
+  width: 100%
+  padding: $generalPadding
+  box-sizing: border-box
+  display: flex
+  justify-content: center
+
+  &-fields
+    min-width: 90%
+    display: flex
+    justify-content: space-around
+    flex-wrap: wrap
+    margin-bottom: ($generalMargin * 7)
+
+  &-data-container
+    width: 80%
+    padding: $generalPadding
+    margin-top: $generalMargin * 2
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
