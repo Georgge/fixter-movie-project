@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const MovieForm = ({ state, handleChange, setActor }) => (
+export const MovieForm = ({ state, handleChange, toCloudinary }) => (
   <div className="form-fields">
     <div className="field">
       <label htmlFor="name" className="field-label">
@@ -115,7 +115,7 @@ export const MovieForm = ({ state, handleChange, setActor }) => (
           type="file"
           name="plot"
           className="field-input"
-          onChange={(e) => { console.log(e); }}
+          onChange={(e) => { toCloudinary(e.target.files[0]); }}
           value={state.image}
         />
       </label>

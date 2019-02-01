@@ -39,6 +39,7 @@ export class CreateMovie extends Component {
   }
 
   componentWillMount =() => {
+    console.log(procces);
     axios.get(`${CONSTANTS.API_URL}/celebrities`)
       .then(({ data }) => {
         const { celebrities } = data;
@@ -51,6 +52,20 @@ export class CreateMovie extends Component {
       });
   }
 
+  cloudinaryUpload = (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'ggc9xwso');
+    formData.append('api_key', '112262233337337');
+    axios.post('https://api.cloudinary.com/v1_1/dlopomjr5/image/upload', formData, {
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    }).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div className="create-page">
@@ -60,6 +75,7 @@ export class CreateMovie extends Component {
             <MovieForm
               state={this.state}
               handleChange={this.handleChange}
+              toCloudinary={this.cloudinaryUpload}
             />
             <div
               className="button"
