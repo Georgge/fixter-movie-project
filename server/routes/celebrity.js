@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Celebrity = require('../models/celebity/Celebrity');
+const Movie = require('../models/movie/Movie');
 const seed = require('../bin/seed_celebrities');
 
 const router = express.Router();
@@ -25,6 +26,17 @@ router.get('/:id', (request, response) => {
 });
 
 
+router.get('/movies/:id', (request, response) => {
+  const { params: { id } } = request;
+  Movie.find({ actors: id })
+    .then((movies) => {
+      response.json({ movies });
+    }).catch((error) => {
+      response.json(400, error);
+    });
+});
+
+
 router.post('/create', (request, response) => {
   Celebrity.create(request.body)
     .then((celebrity) => {
@@ -34,6 +46,33 @@ router.post('/create', (request, response) => {
       response.json(400, error);
     });
 });
+
+
+router.delete('/:id', (request, response) => {
+  const { params: { id } } = request;
+
+  Movie.find({ actors: id })
+    .then((movies) => {
+      movies.map((movie) => {
+        const actorsArray = movie.actors.filter(actor => actor !== id);
+        Movie.findByIdAndUpdate(movie._id, { $set: { actors: actorsArray } } )
+          .then((query) => {
+            console.log(`Deleted: ${query}`);
+          });
+      });
+      Celebrity.findByIdAndDelete(id)
+        .then((query) => {
+          response.json(query);
+        }).catch((error) => {
+          console.log(error);
+          response.json(400, error);
+        });
+    }).catch((error) => {
+      console.log(error);
+      response.json(error);
+    });
+});
+
 
 router.post('/seed', (request, response) => {
   Celebrity.insertMany(seed)

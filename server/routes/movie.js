@@ -37,4 +37,17 @@ router.post('/create', (request, response) => {
     });
 });
 
+
+router.delete('/:id', (request, response) => {
+  const { params: { id } } = request;
+  console.log(`Entra: ${id}`);
+  Movie.findByIdAndDelete(id)
+    .then((query) => {
+      response.json(query);
+    }).catch((error) => {
+      console.log(error);
+      response.json(400, error);
+    });
+});
+
 module.exports = router;

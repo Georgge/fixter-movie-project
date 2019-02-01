@@ -42,6 +42,18 @@ export class MovieDatail extends Component {
       });
   }
 
+  deleteMovie = () => {
+    const { movie } = this.state;
+    if (window.confirm(`Are you sure to delete ${movie.title}?`)) {
+      axios.delete(`${CONSTANTS.API_URL}/movies/${movie._id}`)
+        .then((response) => {
+          console.log(response);
+          window.location.replace('/movies');
+        }).catch((error) => {
+          console.log(error);
+        });
+    }
+  }
 
   render() {
     const { movie, cast } = this.state;
@@ -58,8 +70,16 @@ export class MovieDatail extends Component {
         <div className="movie-detail">
           <header className="movie-detail-header">
             <div className="movie-detail-title">{movie.title}</div>
-            <div>
-              <Link to="/" className="button">Edit</Link>
+            <div className="buttons">
+              <div
+                className="button-delete"
+                role="button"
+                tabIndex={0}
+                onClick={(e) => {
+                  this.deleteMovie();
+                }}
+              />
+              <Link to="/" className="button-modify" />
             </div>
           </header>
           <div className="movie-detail-data">

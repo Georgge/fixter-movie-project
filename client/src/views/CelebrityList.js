@@ -34,14 +34,18 @@ export class CelebrityList extends Component {
           {
             celebrities.map((celebrity) => {
               return (
-                <div className="celebrity-card" key={celebrity._id}>
+                <Link
+                  to={`/celebrities/${celebrity._id}`}
+                  className="celebrity-card"
+                  key={celebrity._id}
+                >
                   <div className="celebrity-card-photo">
                     <img src={celebrity.photo} />
                   </div>
                   <div className="celebrity-card-name">
                     {celebrity.name}
                   </div>
-                </div>
+                </Link>
               );
             })
           }
