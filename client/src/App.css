@@ -31,7 +31,7 @@ a {
   cursor: pointer;
 }
 .button:hover {
-  color: #33313b;
+  color: #dfe2e2;
 }
 .field {
   width: 40%;
@@ -48,7 +48,8 @@ a {
   color: #1cb3c8;
   font-size: 1.1rem;
 }
-.field-label >input {
+.field-label >input,
+.field-label >select {
   margin-top: 6px;
   min-width: 100%;
   height: 36px;
@@ -58,9 +59,10 @@ a {
   border-right: none;
   background-color: rgba(0,0,0,0);
   font-size: 1.3rem;
-  color: #dfe2e2;
+  color: #535962;
 }
-.field-label >input:focus {
+.field-label >input:focus,
+.field-label >select:focus {
   outline: none;
 }
 .wrapper {
@@ -78,19 +80,19 @@ a {
   width: 100%;
   height: 100%;
   line-height: 104px;
-  color: #dfe2e2;
+  color: #535962;
 }
 .home {
   min-height: 100vh;
   width: 100%;
-  background-color: #33313b;
+  background-color: #dfe2e2;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .home-title {
   font-family: 'Open sans';
-  color: #dfe2e2;
+  color: #535962;
   font-size: 2rem;
 }
 .home-buttons {
@@ -101,7 +103,7 @@ a {
 .create-page {
   min-height: 100vh;
   width: 100%;
-  background-color: #33313b;
+  background-color: #dfe2e2;
 }
 .form {
   margin-top: 12px;
@@ -125,4 +127,129 @@ a {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+.list-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #dfe2e2;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.list-container {
+  margin-top: 42px;
+  width: 80%;
+  min-height: 500px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.celebrity-card {
+  width: 200px;
+  height: 250px;
+  padding: 12px;
+  box-sizing: border-box;
+  background-color: #fff;
+  cursor: pointer;
+  margin: 12px;
+}
+.celebrity-card-photo {
+  width: 100%;
+  height: 200px;
+  background-color: #1cb3c8;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.celebrity-card-photo > img {
+  max-width: 100%;
+}
+.celebrity-card-name {
+  width: 100%;
+  color: #535962;
+  text-align: center;
+}
+.movie-card {
+  width: 182px;
+  padding: 12px;
+  cursor: pointer;
+  margin: 12px;
+}
+.movie-card-poster {
+  width: 182px;
+  height: 268px;
+  overflow: hidden;
+}
+.movie-card-poster > img {
+  max-width: 100%;
+}
+.movie-card-name {
+  width: 100%;
+  color: #535962;
+  text-align: center;
+}
+.movie-detail {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(35deg, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.2) 100%);
+}
+.movie-detail-header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #dfe2e2;
+  padding-left: 36px;
+  padding-right: 36px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+.movie-detail-title {
+  font-family: 'Open sans';
+  font-size: 2.3rem;
+  font-weight: 600;
+}
+.movie-detail-data {
+  padding: 36px;
+  box-sizing: border-box;
+}
+.movie-detail-shorts {
+  color: #dfe2e2;
+  display: flex;
+  justify-content: flex-start;
+}
+.movie-detail-shorts > div {
+  display: block;
+  margin: 12px;
+}
+.movie-detail-shorts > div > span {
+  font-weight: bold;
+}
+.movie-detail-shorts > div:first-child {
+  margin-left: 0;
+}
+.movie-detail-shorts > div:last-child {
+  margin-right: 0;
+}
+.movie-detail-plot {
+  color: #dfe2e2;
+}
+.movie-detail-plot > div {
+  width: 55%;
+}
+.movie-detail-plot > div > span {
+  font-weight: bold;
+}
+.image-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
 }

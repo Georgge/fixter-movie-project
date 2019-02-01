@@ -17,7 +17,7 @@ export class CreateCelebrety extends Component {
   }
 
   handleSubmit = () => {
-    axios.post(`${CONSTANTS.API_URL}/celebrities`, this.state)
+    axios.post(`${CONSTANTS.API_URL}/celebrities/create`, this.state)
       .then((response) => {
         window.location.replace('/');
       })

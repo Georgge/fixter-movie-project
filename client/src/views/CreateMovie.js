@@ -1,23 +1,60 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import { SectionTitle } from '../componets/SectionTitle';
 import { MovieForm } from '../componets/MovieForm';
+import { CONSTANTS } from '../config/Constants';
 
 export class CreateMovie extends Component {
   state = {
-    title: '',
-    genre: '',
-    plot: '',
-    poster: '',
-    image: '',
+    movie: {
+      title: '',
+      genre: '',
+      plot: '',
+      poster: '',
+      duration: '',
+      image: '',
+      actors: [],
+    },
+    temporalNames: [],
+    celebrities: [],
   }
 
   handleChange = (e) => {
-    this.setState(e);
+    console.log({ e });
+    this.setState({
+      movie: e,
+    });
+  }
+
+  setActor = (object) => {
+    /*this.setState({
+      movie: object,
+    });*/
   }
 
   handleSubmit = () => {
-    console.log('not');
+    const { movie } = this.state;
+    axios.post(`${CONSTANTS.API_URL}/movies/create`, movie)
+      .then((response) => {
+        window.location.replace('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  componentWillMount =() => {
+    axios.get(`${CONSTANTS.API_URL}/celebrities`)
+      .then(({ data }) => {
+        const { celebrities } = data;
+        this.setState({
+          celebrities,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -29,6 +66,7 @@ export class CreateMovie extends Component {
             <MovieForm
               state={this.state}
               handleChange={this.handleChange}
+              setActor={this.setActor}
             />
             <div
               className="button"

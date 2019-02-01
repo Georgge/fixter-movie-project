@@ -1,0 +1,41 @@
+const express = require('express');
+
+const Movie = require('../models/movie/Movie');
+
+const router = express.Router();
+
+router.get('/', (request, response) => {
+  Movie.find({})
+    .then((movies) => {
+      console.log(movies);
+      response.json({ movies });
+    })
+    .catch((error) => {
+      response.json(400, error);
+    });
+});
+
+
+router.get('/:id', (request, response) => {
+  console.log(request.params);
+  Movie.findById(request.params.id)
+    .then((movie) => {
+      response.json(movie);
+    })
+    .catch((error) => {
+      response.json(400, error);
+    });
+});
+
+
+router.post('/create', (request, response) => {
+  Movie.create(request.body)
+    .then((movie) => {
+      response.json(movie);
+    })
+    .catch((error) => {
+      response.json(400, error);
+    });
+});
+
+module.exports = router;

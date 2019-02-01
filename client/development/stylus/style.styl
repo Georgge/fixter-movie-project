@@ -19,10 +19,13 @@ $generalPadding = 12px
 $generalMargin = 6px
 
 // -> colors
-$black = #33313b
+$black = #535962
 $white = #dfe2e2
 $blue = #1cb3c8
 $silver = #738598
+
+$background = $white
+$texColor = $black
 
 
 
@@ -52,7 +55,7 @@ $silver = #738598
   cursor: pointer
 
   &:hover
-    color: $black
+    color: $background
 
 // -> Field container
 .field
@@ -71,6 +74,7 @@ $silver = #738598
     font-size: 1.1rem
 
     >input
+    >select
       margin-top: $generalMargin
       min-width: 100%
       height: $buttonHeight
@@ -80,10 +84,11 @@ $silver = #738598
       border-right: none
       background-color: rgba(0, 0, 0, 0)
       font-size: 1.3rem
-      color: $white
+      color: $texColor
 
       &:focus
         outline: none
+
 
 
 
@@ -103,7 +108,7 @@ $silver = #738598
     width: 100%
     height: 100%
     line-height: $headerHeight
-    color: $white
+    color: $texColor
 
 
 
@@ -112,14 +117,14 @@ $silver = #738598
 .home
   min-height: 100vh
   width: 100%
-  background-color: $black
+  background-color: $background
   display: flex
   justify-content: center
   align-items: center
 
   &-title
     font-family: 'Open sans'
-    color: $white
+    color: $texColor
     font-size: 2rem
 
   &-buttons
@@ -134,7 +139,7 @@ $silver = #738598
 .create-page
   min-height: 100vh
   width: 100%
-  background-color: $black
+  background-color: $background
 
 .form
   margin-top: $generalMargin * 2
@@ -158,3 +163,139 @@ $silver = #738598
     display: flex
     justify-content: center
     flex-wrap: wrap
+
+
+
+
+/// List
+.list-wrapper
+  width: 100vw
+  min-height: 100vh
+  background-color: $background
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+
+.list-container
+  margin-top: ($generalMargin * 7)
+  width: 80%
+  min-height: 500px
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+
+
+
+
+/// CARDS
+.celebrity-card
+  width: 200px
+  height: 250px
+  padding: $generalPadding
+  box-sizing: border-box
+  background-color: #fff
+  cursor: pointer
+  margin: ($generalMargin * 2)
+
+  &-photo
+    width: 100%
+    height: 200px
+    background-color: $blue
+    overflow: hidden
+    display: flex
+    justify-content: center
+    align-items: center
+
+    > img
+      max-width: 100%
+
+  &-name
+    width: 100%
+    color: $black
+    text-align: center
+
+
+.movie-card
+  width: 182px
+  padding: $generalPadding
+  cursor: pointer
+  margin: ($generalMargin * 2)
+
+  &-poster
+    width: 182px
+    height: 268px
+    overflow: hidden
+
+    > img
+      max-width: 100%
+
+  &-name
+    width: 100%
+    color: $black
+    text-align: center
+
+
+
+
+/// DETAILS
+.movie-detail
+  width: 100vw
+  height: 100vh
+  background-image: linear-gradient( 35deg, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0.2) 100%);
+
+  &-header
+    width: 100%
+    height: 100px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-wrap: wrap
+    color: $white
+    padding-left: ($generalPadding * 3)
+    padding-right: ($generalPadding * 3)
+    box-sizing: border-box
+    margin-bottom: ($generalMargin * 2)
+
+  &-title
+    font-family: 'Open sans'
+    font-size: 2.3rem
+    font-weight: 600
+
+  &-data
+    padding: ($generalPadding * 3)
+    box-sizing: border-box
+
+  &-shorts
+    color: $white
+    display: flex
+    justify-content: flex-start
+
+    > div
+      display: block
+      margin: ($generalMargin * 2)
+
+      & > span
+        font-weight: bold
+      &:first-child
+        margin-left: 0
+      &:last-child
+        margin-right: 0
+
+  &-plot
+    color: $white
+
+    > div
+      width: 55%
+
+      > span
+        font-weight: bold
+
+.image-bg
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  background-position: center
+  background-size: cover
+  z-index: -1
