@@ -30,13 +30,25 @@ export const CelebrityForm = ({ state, handleChange }) => (
 
     <div className="field">
       <label htmlFor="famousPhrase" className="field-label">
-        Famous phrase
+        About
         <input
           type="text"
           name="famousPhrase"
           className="field-input"
-          onChange={(e) => { handleChange({ famousPhrase: e.target.value }); }}
-          value={state.famousPhrase}
+          onChange={(e) => { handleChange({ description: e.target.value }); }}
+          value={state.description}
+        />
+      </label>
+    </div>
+
+    <div className="field">
+      <label htmlFor="photo" className="field-label">
+        Photo
+        <input
+          type="file"
+          name="photo"
+          className="field-input"
+          onChange={(e) => { handleChange({ photo: e.target.files }); }}
         />
       </label>
     </div>

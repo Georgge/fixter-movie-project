@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import { SectionTitle } from '../componets/SectionTitle';
 import { CONSTANTS } from '../config/Constants';
@@ -24,6 +25,11 @@ export class CelebrityList extends Component {
     return (
       <div className="list-wrapper">
         <SectionTitle>Celebrities</SectionTitle>
+        <div className="section-button">
+          <Link to="/celebrities/create">
+            <div className="button">Add Celebrity</div>
+          </Link>
+        </div>
         <div className="list-container">
           {
             celebrities.map((celebrity) => {

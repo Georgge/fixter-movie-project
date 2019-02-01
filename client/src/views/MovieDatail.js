@@ -68,7 +68,7 @@ export class MovieDatail extends Component {
             </div>
             <div className="movie-detail-shorts">
               <div><span>Genre: </span>{movie.genre}</div>
-              <div><span>Duration: </span>{movie.duration}</div>
+              <div><span>Duration: </span>{movie.duration} min.</div>
             </div>
             <div className="movie-detail-plot">
               <div>

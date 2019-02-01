@@ -23,6 +23,7 @@ $black = #535962
 $white = #dfe2e2
 $blue = #1cb3c8
 $silver = #738598
+$red = #ff5959
 
 $background = $white
 $texColor = $black
@@ -36,6 +37,7 @@ $texColor = $black
   font-size: 1.2rem
 
 .button
+.button-red
   width: auto
   min-width: $buttonWidth
   height: $buttonHeight
@@ -55,7 +57,14 @@ $texColor = $black
   cursor: pointer
 
   &:hover
-    color: $background
+    color: $texColor
+
+.button-red
+  background-color: $red
+
+.section-button
+  width: 100%
+  text-align: center
 
 // -> Field container
 .field
@@ -64,6 +73,22 @@ $texColor = $black
   justify-content: flex-start
   padding: $generalPadding
   margin-bottom: ($generalMargin * 7)
+
+  &-in-select
+    width: 100%
+    font-size: 0.7rem
+    color: $texColor
+    display: flex
+    justify-content: flex-start
+    flex-wrap: wrap
+
+    >div
+      display: inline-block
+      &:before
+        content: ',  '
+      &:first-child
+        &:before
+          content: ''
 
   &-label
     display: flex
@@ -241,7 +266,7 @@ $texColor = $black
 .movie-detail
   width: 100vw
   height: 100vh
-  background-image: linear-gradient( 35deg, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0.2) 100%);
+  background-image: linear-gradient( 35deg, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.2) 100%);
 
   &-header
     width: 100%

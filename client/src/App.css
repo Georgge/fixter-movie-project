@@ -11,7 +11,8 @@ a {
   color: #1cb3c8;
   font-size: 1.2rem;
 }
-.button {
+.button,
+.button-red {
   width: auto;
   min-width: 144px;
   height: 36px;
@@ -30,8 +31,16 @@ a {
   display: inline-block;
   cursor: pointer;
 }
-.button:hover {
-  color: #dfe2e2;
+.button:hover,
+.button-red:hover {
+  color: #535962;
+}
+.button-red {
+  background-color: #ff5959;
+}
+.section-button {
+  width: 100%;
+  text-align: center;
 }
 .field {
   width: 40%;
@@ -39,6 +48,23 @@ a {
   justify-content: flex-start;
   padding: 12px;
   margin-bottom: 42px;
+}
+.field-in-select {
+  width: 100%;
+  font-size: 0.7rem;
+  color: #535962;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.field-in-select >div {
+  display: inline-block;
+}
+.field-in-select >div:before {
+  content: ',  ';
+}
+.field-in-select >div:first-child:before {
+  content: '';
 }
 .field-label {
   display: flex;
@@ -192,7 +218,7 @@ a {
 .movie-detail {
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(35deg, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.2) 100%);
+  background-image: linear-gradient(35deg, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.2) 100%);
 }
 .movie-detail-header {
   width: 100%;

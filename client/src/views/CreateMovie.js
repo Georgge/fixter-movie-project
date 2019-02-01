@@ -17,13 +17,30 @@ export class CreateMovie extends Component {
       actors: [],
     },
     temporalNames: [],
+    images: {
+      poster: null,
+      image: null,
+    },
     celebrities: [],
   }
 
   handleChange = (e) => {
-    console.log({ e });
     this.setState({
       movie: e,
+    });
+  }
+
+  setCast = (id, name) => {
+    this.setState({
+      movie: id,
+      temporalNames: name,
+    });
+  }
+
+  setImages = (file) => {
+    console.log(file);
+    this.setState({
+      images: file,
     });
   }
 
@@ -39,7 +56,6 @@ export class CreateMovie extends Component {
   }
 
   componentWillMount =() => {
-    console.log(procces);
     axios.get(`${CONSTANTS.API_URL}/celebrities`)
       .then(({ data }) => {
         const { celebrities } = data;
@@ -52,18 +68,44 @@ export class CreateMovie extends Component {
       });
   }
 
-  cloudinaryUpload = (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'ggc9xwso');
-    formData.append('api_key', '112262233337337');
-    axios.post('https://api.cloudinary.com/v1_1/dlopomjr5/image/upload', formData, {
-      headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    }).then((response) => {
-      console.log(response);
-    }).catch((error) => {
-      console.log(error);
-    });
+  cloudinaryUpload = () => {
+    const { images } = this.state;
+    for (let i = 0; i < 2; i++) {
+      const formData = new FormData();
+
+      if (i === 0) {
+        formData.append('file', images.image[0]);
+        formData.append('folder', 'movies/bg');
+      } else {
+        formData.append('file', images.poster[0]);
+        formData.append('folder', 'movies/poster');
+      }
+      formData.append('upload_preset', CONSTANTS.CLOUDINARY_UPLOAD_PRESET);
+      formData.append('api_key', CONSTANTS.CLOUDINARY_KEY);
+
+      axios.post(CONSTANTS.CLOUDINARY, formData, {
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      }).then(({ data }) => {
+        console.log(data);
+        if (i === 0) {
+          this.setState({
+            movie: { ...this.state.movie, image: data.secure_url },
+          }, () => {
+            if (this.state.movie.poster !== '' && this.state.movie.image !== '')
+              this.handleSubmit();
+          });
+        } else {
+          this.setState({
+            movie: { ...this.state.movie, poster: data.secure_url },
+          }, () => {
+            if (this.state.movie.poster !== '' && this.state.movie.image !== '')
+              this.handleSubmit();
+          });
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
   }
 
   render() {
@@ -75,12 +117,14 @@ export class CreateMovie extends Component {
             <MovieForm
               state={this.state}
               handleChange={this.handleChange}
+              setCast={this.setCast}
               toCloudinary={this.cloudinaryUpload}
+              setImages={this.setImages}
             />
             <div
               className="button"
               onClick={() => {
-                this.handleSubmit();
+                this.cloudinaryUpload();
               }}
             >
               Save

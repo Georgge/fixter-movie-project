@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const MovieForm = ({ state, handleChange, toCloudinary }) => (
+export const MovieForm = ({ state, handleChange, setCast, toCloudinary, setImages }) => (
   <div className="form-fields">
     <div className="field">
       <label htmlFor="name" className="field-label">
@@ -45,10 +45,15 @@ export const MovieForm = ({ state, handleChange, toCloudinary }) => (
       <label htmlFor="poster" className="field-label">
         Poster
         <input
-          type="text"
+          type="file"
           name="poster"
           className="field-input"
-          onChange={(e) => { handleChange({ ...state.movie, poster: e.target.value }); }}
+          onChange={(e) => {
+            setImages({
+              ...state.images,
+              poster: e.target.files,
+            });
+          }}
           value={state.poster}
         />
       </label>
@@ -72,9 +77,9 @@ export const MovieForm = ({ state, handleChange, toCloudinary }) => (
         Actors
         <div className="field-in-select">
           {
-            state.temporalNames.map((celebrity) => {
+            state.temporalNames.map((celebrity, index) => {
               return (
-                <div>
+                <div key={state.movie.actors[index]}>
                   {celebrity}
                 </div>
               );
@@ -84,21 +89,27 @@ export const MovieForm = ({ state, handleChange, toCloudinary }) => (
         <select
           name="actors"
           onChange={(e) => {
-            const id = e.target.value;
-            handleChange({
+            const data = e.target.value.split(',');
+            const movie = {
               ...state.movie,
               actors: [
                 ...state.movie.actors,
-                id,
+                data[0],
               ],
-            });
+            };
+            const cast = [
+              ...state.temporalNames,
+              [data[1]],
+            ];
+
+            setCast(movie, cast);
           }}
         >
           <option></option>
           {
             state.celebrities.map((celebrity) => {
               return (
-                <option key={celebrity._id} value={celebrity._id}>
+                <option key={celebrity._id} value={`${celebrity._id},${celebrity.name}`}>
                   {celebrity.name}
                 </option>
               );
@@ -113,10 +124,14 @@ export const MovieForm = ({ state, handleChange, toCloudinary }) => (
         Image
         <input
           type="file"
-          name="plot"
+          name="image"
           className="field-input"
-          onChange={(e) => { toCloudinary(e.target.files[0]); }}
-          value={state.image}
+          onChange={(e) => {
+            setImages({
+              ...state.images,
+              image: e.target.files,
+            });
+          }}
         />
       </label>
     </div>

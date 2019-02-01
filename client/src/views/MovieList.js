@@ -25,6 +25,11 @@ export class MovieList extends Component {
     return (
       <div className="list-wrapper">
         <SectionTitle>Movies</SectionTitle>
+        <div className="section-button">
+          <Link to="/movies/create">
+            <div className="button">Add Movie</div>
+          </Link>
+        </div>
         <div className="list-container">
           {
             movies.map((movie) => {
