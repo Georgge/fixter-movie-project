@@ -112,10 +112,10 @@ export const MovieForm = ({ state, handleChange, setActor }) => (
       <label htmlFor="famousPhrase" className="field-label">
         Image
         <input
-          type="text"
+          type="file"
           name="plot"
           className="field-input"
-          onChange={(e) => { handleChange({ ...state.movie, image: e.target.value }); }}
+          onChange={(e) => { console.log(e); }}
           value={state.image}
         />
       </label>

@@ -16,6 +16,15 @@ router.get('/', (request, response) => {
 });
 
 
+router.get('/:id', (request, response) => {
+  Celebrity.findById(request.params.id)
+    .then((celebrity) => {
+      response.json(celebrity);
+    })
+    .catch((error) => { response.json(400, error); });
+});
+
+
 router.post('/create', (request, response) => {
   Celebrity.create(request.body)
     .then((celebrity) => {

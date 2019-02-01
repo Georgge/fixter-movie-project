@@ -27,12 +27,6 @@ export class CreateMovie extends Component {
     });
   }
 
-  setActor = (object) => {
-    /*this.setState({
-      movie: object,
-    });*/
-  }
-
   handleSubmit = () => {
     const { movie } = this.state;
     axios.post(`${CONSTANTS.API_URL}/movies/create`, movie)
@@ -66,7 +60,6 @@ export class CreateMovie extends Component {
             <MovieForm
               state={this.state}
               handleChange={this.handleChange}
-              setActor={this.setActor}
             />
             <div
               className="button"
