@@ -44,6 +44,13 @@ export const CelebrityForm = ({ state, handleChange }) => (
     <div className="field">
       <label htmlFor="photo" className="field-label">
         Photo
+        <div className="field-photo">
+          {
+            typeof state.photo === 'string' && state.photo !== ''
+              ? <div style={{ backgroundImage: `url(${state.photo})` }} />
+              : <div />
+          }
+        </div>
         <input
           type="file"
           name="photo"

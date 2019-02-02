@@ -47,6 +47,20 @@ router.post('/create', (request, response) => {
     });
 });
 
+router.patch('/:id', (request, response) => {
+  const { params: { id } } = request;
+  console.log('Entra!!');
+  console.log(request.body);
+  Celebrity.findByIdAndUpdate(id, request.body)
+    .then((query) => {
+      console.log(query);
+      response.json(query);
+    }).catch((error) => {
+      console.log(error);
+      response.json(error);
+    });
+});
+
 
 router.delete('/:id', (request, response) => {
   const { params: { id } } = request;
