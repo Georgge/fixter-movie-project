@@ -29,6 +29,9 @@ export class MovieList extends Component {
           <Link to="/movies/create">
             <div className="button">Add Movie</div>
           </Link>
+          <Link to="/celebrities">
+            <div className="button">Go Celebrities</div>
+          </Link>
         </div>
         <div className="list-container">
           {

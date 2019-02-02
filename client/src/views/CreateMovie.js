@@ -48,7 +48,7 @@ export class CreateMovie extends Component {
     const { movie } = this.state;
     axios.post(`${CONSTANTS.API_URL}/movies/create`, movie)
       .then((response) => {
-        window.location.replace('/');
+        window.location.replace('/movies');
       })
       .catch((error) => {
         console.log(error);
@@ -122,6 +122,8 @@ export class CreateMovie extends Component {
               setImages={this.setImages}
             />
             <div
+              role="button"
+              tabIndex={0}
               className="button"
               onClick={() => {
                 this.cloudinaryUpload();
